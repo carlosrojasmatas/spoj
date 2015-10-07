@@ -23,5 +23,5 @@ app/worksheet
 *.class
 sass/.sass-cache
 conf/version
-/.metadata
+.metadata
 /.settings
