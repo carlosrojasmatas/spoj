@@ -12,9 +12,6 @@ public class CPTTRN3 {
 
     public static void main(String[] args) {
 
-        String Separator = "***";
-        String Inner = "*..";
-        String pattern = Separator + System.lineSeparator() + Inner + System.lineSeparator() + Inner;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -28,32 +25,44 @@ public class CPTTRN3 {
         }
 
         for (int i = 0; i < rows.size(); i++) {
+
             for (int r = 0; r < rows.get(i); r++) {
-                for (int c = 0; c < cols.get(i); c++) {
-
-                    if (r == 0 || r == rows.get(i) - 1) {
-                        System.out.print(Separator);
-                    } else {
-                        System.out.print(Inner);
-                    }
-
-                    if(c == cols.get(i) - 1){
-                        System.out.print("*");
-                    }
-
-                }
-
-                if (r != rows.get(i) - 1) {
-                    System.out.println();
-                }
+                System.out.print(getPattern(r == rows.get(i) - 1, cols.get(i)));
             }
 
-            if (i < rows.size() - 1) {
-                System.out.println("\n");
-            }
+            System.out.println();
 
         }
 
 
+    }
+
+    private static String getPattern(boolean isEnd, int cols) {
+        String Separator = "***";
+        String Inner = "*..";
+        StringBuffer buff = new StringBuffer();
+
+        for (int c = 0; c < cols; c++) {
+            buff.append(Separator);
+        }
+
+        buff.append("*\n");
+        for (int c = 0; c < cols; c++) {
+            buff.append(Inner);
+        }
+
+        buff.append("*\n");
+        for (int c = 0; c < cols; c++) {
+            buff.append(Inner);
+        }
+
+        if (isEnd) {
+            buff.append("*\n");
+            for (int c = 0; c < cols; c++) {
+                buff.append(Separator);
+            }
+        }
+
+        return buff.append("*\n").toString();
     }
 }
