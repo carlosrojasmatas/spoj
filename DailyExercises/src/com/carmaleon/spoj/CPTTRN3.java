@@ -7,10 +7,15 @@ import java.util.Scanner;
 /**
  * Created by charly on 10/14/15.
  */
-public class CPTTRN2 {
+public class CPTTRN3 {
 
 
     public static void main(String[] args) {
+
+        String Separator = "***";
+        String Inner = "*..";
+        String pattern = Separator + System.lineSeparator() + Inner + System.lineSeparator() + Inner;
+
         Scanner scanner = new Scanner(System.in);
 
         List<Integer> rows = new ArrayList<Integer>();
@@ -26,10 +31,14 @@ public class CPTTRN2 {
             for (int r = 0; r < rows.get(i); r++) {
                 for (int c = 0; c < cols.get(i); c++) {
 
-                    if (c == 0 || r == 0 || r == rows.get(i) - 1 || c == cols.get(i) - 1) {
-                        System.out.print("*");
+                    if (r == 0 || r == rows.get(i) - 1) {
+                        System.out.print(Separator);
                     } else {
-                        System.out.print(".");
+                        System.out.print(Inner);
+                    }
+
+                    if(c == cols.get(i) - 1){
+                        System.out.print("*");
                     }
 
                 }
